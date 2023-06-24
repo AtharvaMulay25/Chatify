@@ -30,6 +30,13 @@ function Register(props) {
             confirmPassword : ""
         });
 
+        //redirecting user to chat page if its logged in
+        useEffect(()=>{
+            if(localStorage.getItem("chatify-user"))
+            {
+                navigate("/")
+            }
+        }, [])  //to run it only the first time when compoonent renders
 
         const handleChange = (event)=>
         {
@@ -86,7 +93,7 @@ function Register(props) {
                   }
                   if(data.status === true)
                   {
-                    localStorage.setItem("chatify-user", JSON.stringify(data.user));
+                    localStorage.setItem("chatify-user", JSON.stringify(data.newUser));
                     navigate("/");
                   }                  
                  
