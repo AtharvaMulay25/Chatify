@@ -119,7 +119,7 @@ function Register(props) {
                     <input type="password" name="confirmPassword" placeholder="Confirm Password" onChange={(e)=>handleChange(e)} />
 
                     <button type='submit'>Create User</button>
-                    <span>Already have an account ? <Link to="/login">Login</Link> </span>
+                    <span>Already have an account ? <Link to="/login">Sign in</Link> </span>
                 </form>
             </FormContainer>
             <ToastContainer />
