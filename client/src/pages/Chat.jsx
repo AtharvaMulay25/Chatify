@@ -1,7 +1,51 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from "styled-components"
-
+import axios from "axios"
+import {useNavigate} from "react-router-dom"
 function Chat(props) {
+
+    const navigate = useNavigate()
+
+    const [contacts, setContacts] = useState([]);
+    const [currentUser,setCurrentUser ] = useState(undefined);
+
+    useEffect(()=>
+    {
+        async function validateAndSetUser()
+        {
+            //redirect to login if not logged in
+            if(!localStorage.getItem("chatify-user"))
+            {
+                navigate("/login")
+            }
+            else    //set the current User if logged in
+            {
+                setCurrentUser(await JSON.parse(localStorage.getItem("chatify-user")));
+            }
+        }
+        validateAndSetUser();
+    }, [])
+
+    useEffect(()=>
+    {
+        async function fetchAllUsers()
+        {
+            if(currentUser)
+            {
+                if(currentUser.isAvatarImageSet)
+                {
+                    const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
+                    setContacts(data.data);
+                }
+                else
+                {
+                    navigate("/setAvatar")
+                }
+            }
+        };
+        fetchAllUsers();
+
+    }, [currentUser])
     return (
         <Container>
             <div className="container"></div>
