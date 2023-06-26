@@ -43,7 +43,7 @@ function Contacts({contacts, changeChat}) {
                                     <div className={`contact ${ind === selectedChat ? 'selected' : ""}`} key={ind} onClick={()=>changeCurrentChat(ind, contact)}>
                                         <div className="avatar">
                                             <img
-                                                //this would treat base64 string as image
+                                                // this would treat base64 string as image
                                                 src={`data:image/svg+xml;base64,${contact.avatarImage}`}
                                                 alt="avatar"
                                             />
