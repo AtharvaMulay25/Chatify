@@ -55,21 +55,21 @@ function Contacts({contacts, changeChat}) {
                                 )
                             })
                         }
-                        <div className="current-user">
-                            <div className="avatar">
-                                <img
-                                    //this would treat base64 string as image
-                                    src={`data:image/svg+xml;base64,${currentUserImage}`}
-                                    alt="avatar"
-                                />
-                            </div>
-                            <div className="username">
-                                <h2>{currentUserName}</h2>
-                            </div>
+                    </div>
+                    <div className="current-user">
+                        <div className="avatar">
+                            <img
+                                //this would treat base64 string as image
+                                src={`data:image/svg+xml;base64,${currentUserImage}`}
+                                alt="avatar"
+                            />
+                        </div>
+                        <div className="username">
+                            <h2>{currentUserName}</h2>
                         </div>
                     </div>
                 </Container>
-            )  }
+            ) }
         </>
        
     );
@@ -142,36 +142,36 @@ const Container = styled.div`
         {
             background-color: #9186f3;
         }
-        .current-user
+    }
+    .current-user
+    {
+        background-color: #0d0d30;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        .avatar
         {
-            background-color: #0d0d30;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            .avatar
-            {
-                img{
-                    height: 4rem;
-                    max-inline-size: 100%;
-                }
+            img{
+                height: 4rem;
+                max-inline-size: 100%;
             }
+        }
+        .username
+        {
+            h2
+            {
+                color: white;
+            }
+        }
+        @media screen and (min-width: 720px) and (max-width: 1080px)
+        {
+            gap: 0.5rem;
             .username
             {
                 h2
                 {
-                    color: white;
-                }
-            }
-            @media screen and (min-width: 720px) and (max-width: 1080px)
-            {
-                gap: 0.5rem;
-                .username
-                {
-                    h2
-                    {
-                        font-size: 1rem;
-                    }
+                    font-size: 1rem;
                 }
             }
         }

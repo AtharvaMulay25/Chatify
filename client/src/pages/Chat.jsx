@@ -1,15 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import styled from "styled-components"
 import axios from "axios"
 import {useNavigate} from "react-router-dom"
 
 import Contacts from '../components/Contacts';
 import Welcome from '../components/Welcome';
-import { allUsersRoute } from '../utilities/APIroutes';
+import { allUsersRoute, host} from '../utilities/APIroutes';
 import ChatContainer from '../components/ChatContainer';
+
+import {io} from "socket.io-client"
+
 function Chat(props) {
 
     const navigate = useNavigate()
+    const socket = useRef();
 
     const [contacts, setContacts] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);    //hook to check if we get current user, and then display welcome component
@@ -34,6 +38,17 @@ function Chat(props) {
         }
         validateAndSetUser();
     }, [])
+
+    useEffect(()=>{
+        if(currentUser)
+        {
+            socket.current = io(host
+            //     , {transports: ['websocket'], // Required when using Vite    
+            // }
+            );
+            socket.current.emit("add-user", currentUser._id);
+        }
+    }, [currentUser])
 
     useEffect(()=>
     {
@@ -66,7 +81,7 @@ function Chat(props) {
                 <Contacts contacts={contacts} changeChat={handleChatChange}/>
                 {/* //for welcome page, Isloaded should be true and currentChat should be undefined, and for chatcontainer isLoaded should be true */}
                 {isLoaded && currentChat ===  undefined ? <Welcome currentUser={currentUser}/> : isLoaded && (
-                    <ChatContainer currentChat = {currentChat} currentUser={currentUser}/>
+                    <ChatContainer currentChat = {currentChat} currentUser={currentUser}  socket= {socket}/>
                 )}                
             </div>
         </Container>
