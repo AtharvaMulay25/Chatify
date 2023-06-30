@@ -27,7 +27,7 @@ function ChatInput({handleSendMsg}) {
     const sendChat = (event)=>
     {
         console.log(msg);
-        alert('send')
+        // alert('send')
         event.preventDefault();
         if(msg.length > 0)
         {
@@ -107,7 +107,7 @@ const Container  = styled.div`
     background-color: #ffffff34;
     input {
       width: 90%;
-      height: 60%;
+      /* height: 60%; */
       background-color: transparent;
       color: white;
       border: none;

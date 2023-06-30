@@ -4,6 +4,7 @@ const cors = require('cors')
 const env = require("dotenv")
 env.config()
 const userRoutes = require("./routes/users")
+const messageRoutes = require("./routes/messages")
 
 //use local development database
 mongoose.connect(process.env.MONGO_URL).then(()=>
@@ -24,8 +25,9 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-
+    
 app.use("/api/auth", userRoutes);
+app.use("/api/messages", messageRoutes);
 
 
 app.listen(process.env.PORT, ()=>

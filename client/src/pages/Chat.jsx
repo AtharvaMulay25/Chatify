@@ -66,7 +66,7 @@ function Chat(props) {
                 <Contacts contacts={contacts} changeChat={handleChatChange}/>
                 {/* //for welcome page, Isloaded should be true and currentChat should be undefined, and for chatcontainer isLoaded should be true */}
                 {isLoaded && currentChat ===  undefined ? <Welcome currentUser={currentUser}/> : isLoaded && (
-                    <ChatContainer currentChat = {currentChat}/>
+                    <ChatContainer currentChat = {currentChat} currentUser={currentUser}/>
                 )}                
             </div>
         </Container>
