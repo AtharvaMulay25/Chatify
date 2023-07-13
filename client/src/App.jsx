@@ -4,6 +4,8 @@ import Register from "./pages/Register"
 import Chat from "./pages/Chat"
 import Login from "./pages/Login"
 import SetAvatar from './pages/SetAvatar';
+import InvalidRoute from './pages/InvalidRoute';
+
 function App() {
   return (
   
@@ -14,6 +16,7 @@ function App() {
           <Route path="/chat" element={<Chat />} />
           <Route path="/setAvatar" element={<SetAvatar />} />
           <Route path="/" element={<Chat />} />
+          <Route path="*" element={<InvalidRoute/>} />
         </Routes>
     </BrowserRouter>
     

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from "styled-components"
-import EmojiPicker from 'emoji-picker-react';
+import Picker from "emoji-picker-react";
 //for send button
 import {IoMdSend} from "react-icons/io"
 import {BsEmojiSmileFill} from "react-icons/bs"
@@ -16,10 +16,10 @@ function ChatInput({handleSendMsg}) {
         setShowEmojiPicker(!showEmojiPicker);
     }
     //adding emoji at the end of the msg
-    const handleEmojiClick = (emojiData, event)=>
+    const handleEmojiClick = (event, emojiData)=>
     {
         let message = msg;
-        console.log(emojiData.emoji);
+        // console.log(emojiData.emoji);
         message += emojiData.emoji;
         setMsg(message);
     }
@@ -42,7 +42,7 @@ function ChatInput({handleSendMsg}) {
             <div className="button-container">
                 <div className="emoji">
                     <BsEmojiSmileFill onClick={handleEmojiPickerShowHide}/>
-                    {showEmojiPicker && <EmojiPicker onEmojiClick={handleEmojiClick}/>}
+                    {showEmojiPicker && <Picker onEmojiClick={handleEmojiClick}/>}
                 </div>
             </div>
 
@@ -85,14 +85,38 @@ const Container  = styled.div`
                 color: #ffff00c8;
                 cursor: pointer;
             }
-            .EmojiPickerReact 
+            .emoji-picker-react 
             {
                 position: absolute;
-                top: -480px;
+                top: -350px;
                 background-color: #080420;
                 box-shadow: 0 5px 10px #9a86f3;
-                border-color: #9a86f3;
+                border-color: #9a86f3;.emoji-scroll-wrapper::-webkit-scrollbar
+                {
+                    background-color: #080420;
+                    width: 5px;
+                    &-thumb 
+                    {
+                        background-color: #9a86f3;
+                    }
+                }
 
+                .emoji-categories
+                {
+                    button 
+                    {
+                        filter: contrast(0);
+                    }
+                }
+                /* .emoji-search 
+                {
+                    background-color: transparent;
+                    border-color: #9a86f3;
+                } */
+                .emoji-group:before 
+                {
+                    background-color: #080420;
+                }
                 /* styling remaining*******************, also showing console errors on clicking on emoji picker */
             }
         }
