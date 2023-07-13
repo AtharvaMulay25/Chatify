@@ -79,6 +79,11 @@ const Container = styled.div`
     grid-template-rows: 10% 75% 15%;
     overflow: hidden;
     background-color: #080420;
+    @media screen and (max-width: 720px)
+    {
+        /* max-height: 40%; */
+        min-height: 40%;
+    }
     .brand
     {
         display: flex;
@@ -137,6 +142,17 @@ const Container = styled.div`
                     color: white;
                 }
             }
+            @media screen and  (max-width: 720px)
+            {
+                min-height:3rem;
+                .avatar
+                {
+                    img{
+                        height: 2rem;
+                        max-inline-size: 100%;
+                    }
+                }
+            }
         }
         .selected
         {
@@ -174,7 +190,25 @@ const Container = styled.div`
                     font-size: 1rem;
                 }
             }
+            .avatar
+            {
+                img{
+                    height: 3rem;
+                    max-inline-size: 100%;
+                }
+            }
         }
+        @media screen and (max-width: 720px)
+        {
+            .avatar
+            {
+                img{
+                    height: 2rem;
+                    max-inline-size: 100%;
+                }
+            }
+        }
+        
     }
 `;
 

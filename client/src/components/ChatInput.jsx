@@ -70,6 +70,11 @@ const Container  = styled.div`
         padding: 0 1rem;
         gap: 1rem;
     }
+    @media screen and (max-width: 720px)
+    {
+        grid-template-columns: 10% 90%;
+        padding: 0 1rem;
+    }
     .button-container 
     {
         display: flex;
@@ -117,7 +122,7 @@ const Container  = styled.div`
                 {
                     background-color: #080420;
                 }
-                /* styling remaining*******************, also showing console errors on clicking on emoji picker */
+                
             }
         }
        
@@ -161,10 +166,19 @@ const Container  = styled.div`
             font-size: 1rem;
             }
         }
-      svg {
+      svg
+        {
         font-size: 2rem;
         color: white;
       }
+        @media screen and (max-width: 720px)
+        {
+            padding: 0.6rem 2rem;
+            svg 
+            {
+            font-size: 1.1rem;
+            }
+        }
     }
   }
 `;

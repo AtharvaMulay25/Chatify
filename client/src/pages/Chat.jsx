@@ -78,11 +78,15 @@ function Chat(props) {
     return (
         <Container>
             <div className="container">
+                
                 <Contacts contacts={contacts} changeChat={handleChatChange}/>
+                
                 {/* //for welcome page, Isloaded should be true and currentChat should be undefined, and for chatcontainer isLoaded should be true */}
+                
                 {isLoaded && currentChat ===  undefined ? <Welcome currentUser={currentUser}/> : isLoaded && (
                     <ChatContainer currentChat = {currentChat} currentUser={currentUser}  socket= {socket}/>
-                )}                
+                )}   
+                
             </div>
         </Container>
     );
@@ -95,8 +99,13 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1rem;  
     background-color: #131324;
+        @media screen  and (max-width: 720px)
+         {
+           overflow-y: auto;
+            
+        }
     .container {
         height: 85vh;
         width: 85vw;
@@ -106,6 +115,15 @@ const Container = styled.div`
 
         @media screen and (min-width: 720px) and (max-width: 1080px) {
             grid-template-columns: 35% 65%;
+        }
+        @media screen  and (max-width: 720px) {
+         
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-between;
+            height: 100vh;
+            width: 95vw;
+            
         }
     }
 `;
